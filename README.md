@@ -1,4 +1,4 @@
-<h1 align="center">Mobile Devops Project</h1>
+<h1 align="center">Mobile Devops</h1>
 
 <p align="center">
   <a href="https://github.com/rewanthtammana/Damn-Vulnerable-Bank/fork">
