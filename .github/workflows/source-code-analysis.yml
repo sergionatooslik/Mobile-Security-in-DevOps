@@ -19,12 +19,7 @@ jobs:
       run: |
         ./insider --tech android --target .
         
-    - name: Commit and push changes
+    - name: view results
       run: |
-        git config --local user.email "seegionatooslik@gmail.com"
-        git config --local user.name "sergionatooslik"
-        git add report.json
-        git commit -m "Add or update report.json"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        cat report.json
+
