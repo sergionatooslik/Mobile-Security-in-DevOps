@@ -1,0 +1,30 @@
+name: Scan code before creating build
+
+on: [push]
+
+jobs:
+  scan-code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: install insidersec for code scaning
+      run: |
+        wget https://github.com/insidersec/insider/releases/download/3.0.0/insider_3.0.0_linux_x86_64.tar.gz
+        tar -xf insider_3.0.0_linux_x86_64.tar.gz 
+        chmod +x insider
+
+    - name: run insidersec
+      run: |
+        ./insider --tech android --target .
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "seegionatooslik@gmail.com"
+        git config --local user.name "sergionatooslik"
+        git add report.json
+        git commit -m "Add or update report.json"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
